@@ -1,0 +1,113 @@
+import pickle
+# import os
+# os.system("clear")
+
+
+class colors:
+    RED = '\033[31m'
+    ENDC = '\033[m'
+
+tasks = []
+
+
+def list():
+    for count, item in enumerate(tasks, 1):
+        print(str(count) + ". ", item)
+
+
+def add():
+    tasks.append(input(""))
+
+
+def remove():
+    del tasks[(int(input()) - 1)]
+
+
+def edit():
+    a, b = int(input()) - 1, int(input()) - 1
+    tasks[b], tasks[a] = tasks[a], tasks[b]
+
+
+def clear():
+    tasks.clear()
+
+
+def restart():
+    task_save = str(input("Save the task? y/n: "))
+    if task_save.lower() == ("y"):
+        save()
+
+    elif task_save.lower() == ("n"):
+        script()
+
+    else:
+        print("invalid input")
+    restart()
+
+
+def save():
+    document_name = str(input("Save as: "))
+    pickle.dump(tasks, open((document_name + ".txt"), "wb"))
+    script()
+
+def load():
+    pickle.load(open((input() + ".txt"), "rb"))
+    
+
+
+
+def script():
+    print(colors.RED + "TASKS created by Sean Katauskas\n\nList    Add    Remove    Switch    Clear\nRestart    Save    Load" + colors.ENDC)
+    tasks.clear()
+
+    on = 1
+    while on == 1:
+        print("\n")
+
+        f_call = input("")
+        if f_call.lower() == "add":
+            add()
+        elif f_call.lower() == "list":
+            list()
+        elif f_call.lower() == "remove":
+            remove()
+        elif f_call.lower() == "edit":
+            edit()
+        elif f_call.lower() == "clear":
+            clear()
+        elif f_call.lower() == "restart":
+            restart()
+        elif f_call.lower() == "save":
+            save()
+        elif f_call.lower() == "load":
+            load()
+        else:
+            print("Enter list, add, remove, edit, clear, restart, save or open to manage the document.")
+
+
+script()
+
+
+
+#encoding, saving the list and opening the list later
+#the load function does not work
+
+#open a task list
+#create called upon file of task lists
+#export it to be an application
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
