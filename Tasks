@@ -57,7 +57,7 @@ def load():
 
 
 def script():
-    print(colors.RED + "TASKS created by Sean Katauskas\n\nList    Add    Remove    Switch    Clear\nRestart    Save    Load" + colors.ENDC)
+    print(colors.RED + "TASKS created by Sean\n\nList    Add    Remove    Switch    Clear\nRestart    Save    Load" + colors.ENDC)
     tasks.clear()
 
     on = 1
